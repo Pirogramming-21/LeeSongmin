@@ -86,16 +86,25 @@
         }
         #header {
             text-align: left;
+            position: relative; /*header-hamburger의 position이 absolute니까 부모인 header를 relative로 해주면 기준점이 header로 바뀜*/
         }
         #header-hamburger {
-            margin-top: 18px;
+            position: absolute;
+            top: 5px;
+            left: -12px;
             padding: 10px; /*마진으로 하면 테두리 클릭이 안됨. 패딩은 버튼에 포함이 됨. 보더까지는 자기자신의 사이즈.*/
             display: inline-block;
             background: none;
             border: none;
             cursor: pointer;
         }
-        #header-hamburger:hover { /*header-hamburger에 마우스를 올리면*/
+        #header-hamburger:hover::before { /*header-hamburger에 마우스를 올리면*/
+            position: absolute;
+            content: '';
+            left: 1px; /*부모기준*/
+            top: 1px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background-color: #e7eced;
         }
@@ -125,6 +134,5 @@
             <div id="main"></div>
         </div>
     </div>
-    
 </body>
 </html>
