@@ -119,6 +119,68 @@
             background-position: -326px -161px;
             background-size: 442px 434px;
         }
+        #header-naverpay {
+            position: absolute;
+            top: 5px;
+            right: 42px;
+            padding: 10px; /*마진으로 하면 테두리 클릭이 안됨. 패딩은 버튼에 포함이 됨. 보더까지는 자기자신의 사이즈.*/
+            display: inline-block;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        #header-naverpay:hover::before { /*header-hamburger에 마우스를 올리면*/
+            position: absolute;
+            content: '';
+            z-index: 0; /*형제끼리만*/
+            left: 1px; /*부모기준*/
+            top: 1px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: #e7eced;
+        }
+        #header-naverpay > div {
+            background-image: url(./sp_main.png);
+            width: 26px;
+            height: 26px;
+            position: relative;
+            z-index: 1;
+            background-repeat: no-repeat;
+            background-position: -326px -161px;
+            background-size: 442px 434px;
+        }
+        #header-notice {
+            position: absolute;
+            top: 5px;
+            right: -10px;
+            padding: 10px; /*마진으로 하면 테두리 클릭이 안됨. 패딩은 버튼에 포함이 됨. 보더까지는 자기자신의 사이즈.*/
+            display: inline-block;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        #header-notice:hover::before { /*header-hamburger에 마우스를 올리면*/
+            position: absolute;
+            content: '';
+            z-index: 0; /*형제끼리만*/
+            left: 1px; /*부모기준*/
+            top: 1px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background-color: #e7eced;
+        }
+        #header-notice > div {
+            background-image: url(./sp_main.png);
+            width: 26px;
+            height: 26px;
+            position: relative;
+            z-index: 1;
+            background-repeat: no-repeat;
+            background-position: -326px -161px;
+            background-size: 442px 434px;
+        }
         #main {
             height: 2000px;
         }
@@ -140,6 +202,18 @@
                     <!-- ::before -->
                     <div></div>
                     <span class="blind">확장 영역</span>
+                    <!-- ::after -->
+                </button>
+                <button id="header-naverpay">
+                    <!-- ::before -->
+                    <div></div>
+                    <span class="blind">네이버 페이</span>
+                    <!-- ::after -->
+                </button>
+                <button id="header-notice">
+                    <!-- ::before -->
+                    <div></div>
+                    <span class="blind">알림</span>
                     <!-- ::after -->
                 </button>
             </div>
