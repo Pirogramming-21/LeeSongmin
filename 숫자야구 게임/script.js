@@ -7,11 +7,9 @@ let gameOver = false;
 function initGame() {
     answer = generateRandomNumbers();
     attempts = 9;
-    gameOver = false;
     clearInputs();
     clearResults();
     document.querySelector('.submit-button').disabled = false;
-    document.getElementById('game-result-img').src = '';
 }
 
 // 랜덤 숫자 생성
@@ -36,4 +34,39 @@ function clearInputs() {
 // 결과 창 초기화
 function clearResults() {
     document.querySelector('.result-display').innerHTML = '';
+}
+
+// 숫자 확인
+function check_numbers() {
+    let inputs = [
+        document.getElementById('number1').value,
+        document.getElementById('number2').value,
+        document.getElementById('number3').value
+    ];
+
+    if (inputs.some(input => input === '')) {
+        clearInputs();
+        return;
+    }
+
+    let guess = imputs.map(Number);
+    let result = checkGuess(guess);
+    displayResult(guess, result);
+    attempts--;
+
+}
+
+// 추측한 숫자와 정답 비교
+function checkGuess(guess) {
+
+}
+
+// 결과 표시
+function displayResult(guess, result) {
+
+}
+
+// 게임 종료
+function endGame() {
+    gameOver = true;
 }
