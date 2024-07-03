@@ -83,7 +83,7 @@ body {
   height: 60%;
   list-style: none;
   padding-left: 0; /* ul태그는 양 옆에 패딩이 기본적으로 있음. 왼쪽으로 붙인거 */
-  overflow-y: scroll; /* 페이지 전체에서 스크롤이 발생하지 않고, items내에서만 스크롤 발생 */
+  /* overflow-y: scroll; */ /* 페이지 전체에서 스크롤이 발생하지 않고, items내에서만 스크롤 발생 */
 }
 
 .item {
