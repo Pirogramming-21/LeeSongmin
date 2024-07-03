@@ -6,8 +6,100 @@
   --color-yellow: #fbbe28;
   --color-pink: #fd7f84;
   --color-light-grey: #dfdfdf;
+
+  /* size */
+  --base-space: 8px;
+  --size-button: 60px;
+  --size-border: 4px;
+  --size-thumbnail: 50px;
+  --font-size: 18px;
+
+  /* animation */
+  --size-animation-duration: 300ms;
 }
 
 * {
   box-sizing: border-box;
+}
+
+body {
+  height: 100vh; /* 화면 크기에 맞춰서 */
+  background-color: var(--color-black);
+  display: flex; /* flex의 direction은 row */
+  flex-direction: column; /* 한줄에 하나씩 */
+  justify-content: center; /* 수평 정렬 */
+  align-items: center;
+}
+
+.logo {
+  cursor: pointer; /* 클릭 가능 표시 */
+  transition: transform var(--size-animation-duration) ease;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: transform var(--size-animation-duration) ease;
+  margin: var(--base-space);
+}
+
+.btn:hover,
+.logo:hover {
+  transform: scale(1.1); /* 마우스 올리면 1.1배 증가 */
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+}
+.imgBtn {
+  width: var(--size-button);
+  height: var(var(--size-button));
+}
+
+.colorBtn {
+  font-size: var(--font-size);
+  padding: calc(var(--base-space) * 2);
+  border-radius: var(--size-border);
+}
+
+.blue {
+  background-color: var(--color-blue);
+}
+
+.yellow {
+  background-color: var(--color-yellow);
+}
+
+.pink {
+  background-color: var(--color-pink);
+}
+
+.items {
+  /* background-color: salmon; 확인용으로 색깔*/ 
+  width: 60%; /* 반응형 */
+  height: 60%;
+  list-style: none;
+  padding-left: 0; /* ul태그는 양 옆에 패딩이 기본적으로 있음. 왼쪽으로 붙인거 */
+  overflow-y: scroll; /* 페이지 전체에서 스크롤이 발생하지 않고, items내에서만 스크롤 발생 */
+}
+
+.item {
+  background-color: var(--color-white);
+  display: flex;
+  align-items: center;
+  padding: var(--base-space);
+  margin-bottom: var(--base-space);
+}
+
+.item__thumbnail {
+  width: var(--size-thumbnail);
+  height: var(--size-thumbnail);
+}
+
+.item__description {
+  margin-left: var(--base-space);
+  font-size: var(--font-size);
 }
