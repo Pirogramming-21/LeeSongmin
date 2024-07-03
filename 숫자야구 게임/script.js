@@ -6,7 +6,6 @@ let gameOver = false;
 // 게임 초기화
 function initGame() {
     answer = generateRandomNumbers();
-    console.log(answer);
     attempts = 9;
     gameOver = false;
     clearInputs();
