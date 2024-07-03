@@ -6,10 +6,15 @@ let gameOver = false;
 // 게임 초기화
 function initGame() {
     answer = generateRandomNumbers();
+    console.log(answer);
     attempts = 9;
+    gameOver = false;
     clearInputs();
     clearResults();
     document.querySelector('.submit-button').disabled = false;
+    let resultImg = document.getElementById('game-result-img');
+    resultImg.src = '';
+    resultImg.style.display = 'none';
 }
 
 // 랜덤 숫자 생성
@@ -38,6 +43,8 @@ function clearResults() {
 
 // 숫자 확인
 function check_numbers() {
+    if(gameOver) return;
+
     let inputs = [
         document.getElementById('number1').value,
         document.getElementById('number2').value,
@@ -49,11 +56,18 @@ function check_numbers() {
         return;
     }
 
-    let guess = imputs.map(Number);
+    let guess = inputs.map(Number);
     let result = checkGuess(guess);
     displayResult(guess, result);
     attempts--;
 
+    if (result.strikes === 3) {
+        endGame(true);
+    } else if (attempts === 0) {
+        endGame(false);
+    }
+
+    clearInputs();
 }
 
 // 추측한 숫자와 정답 비교
@@ -83,16 +97,32 @@ function displayResult(guess, result) {
     let rightDiv = document.createElement('div');
     rightDiv.className = 'right';
 
-    if (result.strikes === 0 || result.balls ===0) {
+    if (result.strikes === 0 && result.balls ===0) {
         rightDiv.innerHTML = '<div class="out num-result">0</div>';
-    } else if (result.strikes > 0) {
-        rightDiv.innerHTML += `${result.strikes} <div class="strike num-result">S</div>`;
-    } else if (result.balls > 0 ) {
-        rightDiv.innerHTML += `${result.balls} <div class="ball num-result">B</div>`;
+    } else {
+        if (result.strikes > 0) {
+            rightDiv.innerHTML += `${result.strikes} <div class="strike num-result">S</div>`;
+        } 
+        if (result.balls > 0 ) {
+            rightDiv.innerHTML += `${result.balls} <div class="ball num-result">B</div>`;
+        }
     }
+    resultDiv.appendChild(leftDiv);
+    resultDiv.innerHTML += ':';
+    resultDiv.appendChild(rightDiv);
+
+    document.querySelector('.result-display').prepend(resultDiv);
 }
 
+
 // 게임 종료
-function endGame() {
+function endGame(isWin) {
     gameOver = true;
+    document.querySelector('.submit-button').disabled = true;
+    let resultImg = document.getElementById('game-result-img');
+    resultImg.src = isWin ? 'success.png' : 'fail.png';
+    resultImg.style.display = 'block';
 }
+
+// 게임 시작
+window.onload = initGame;

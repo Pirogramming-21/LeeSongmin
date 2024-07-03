@@ -22,20 +22,12 @@
             </div>
             <button class="submit-button" onclick="check_numbers();">확인하기</button>
         </div>
+        <div class="attempts-left">남은 시도: <span id="attempts-count">9</span></div>
         <div class="game-result">
-            <img src="" id="game-result-img">
+            <img src="" id="game-result-img" alt="게임 결과" style="display: none;">
         </div>
-        <div class="result-display">
-            <!-- 아래는 예시입니다. -->
-            <div class="check-result">
-                <div class="left">3 5 6</div>
-                :
-                <div class="right">
-                    1 <div class="strike num-result">S</div>
-                    1 <div class="ball num-result">B</div>
-                </div>
-            </div>
-        </div>
+        <div class="result-display"></div>
+        <button id="new-game-button" onclick="initGame();">한 번 더</button>
         <div class="footer" style="display: none;">
             made by ajroot5685
         </div>
