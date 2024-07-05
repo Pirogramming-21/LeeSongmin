@@ -1,0 +1,120 @@
+:root {
+    --main-bg-color: #98af98; 
+    --secondary-bg-color: #b9ceb9; 
+    --text-color: black; 
+    --button-bg-color: #b9ceb9; 
+    --border-radius: 20px;
+}
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+}
+
+.title i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.title h1 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.container {
+    background-color: var(--main-bg-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    width: 30%;
+}
+
+.stopwatch {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 3px;
+}
+
+.time {
+    font-size: 48px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    margin-bottom: 30px;
+}
+
+.buttons button {
+    margin: 0 5px;
+    padding: 20px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    background-color: var(--button-bg-color);
+    color: var(--text-color);
+}
+
+.lap-record {
+    margin-top: 20px;
+    background-color: var(--main-bg-color);
+    padding: 5px;
+    border-radius: var(--border-radius);
+    width: 40%;
+}
+
+.lap-record h2 {
+    color: var(--text-color);
+    font-size: 25px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#lapList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lap-time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 10px;
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    font-size: 18px;
+    width: 35%;
+}
+#deleteBtn {
+    display: flex;
+    justify-content: flex-end;
+    background-color: transparent;
+    align-items: flex-end;
+    border: none;
+    cursor: pointer;
+    font-size: 25px;
+}
+.deleteBtn:hover {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #e74c3c;
+    font-size: 25px;
+}
