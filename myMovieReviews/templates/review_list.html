@@ -1,11 +1,13 @@
 <h1>영화 리뷰 목록</h1>
-
+<ul>
     {% for review in reviews %}
-        <h2>{{ review.title }}</h2>
-        <small>{{ review.release_year }}</small>
-        <small>{{ review.genre }}</small>
-        <small>{{ review.score }}</p>
-        </br>
+        <li>
+            <a href="/reviews/{{review.id}}"><h2>{{ review.title }}</h2></a>
+            <small>개봉년도: {{ review.year }}</small> <br>
+            <small>장르: {{ review.genre }}</small> <br>
+            <small>별점: {{ review.score }}</small> <br>
+        </li>
     {% endfor %}
+</ul>
 
 <a href="/reviews/create">리뷰 작성</a>

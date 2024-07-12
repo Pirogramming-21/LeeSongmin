@@ -8,4 +8,4 @@ class Review(models.Model):
     running_time = models.CharField(max_length=20)
     content = models.TextField()
     director = models.CharField(max_length=20)
-    actors = models.CharField(max_length=20)
+    actor = models.CharField(max_length=20)

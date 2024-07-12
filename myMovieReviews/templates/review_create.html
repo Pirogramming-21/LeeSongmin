@@ -1,15 +1,15 @@
-<h1> 영화 리뷰 작성하기 </h1>
+<h1> 리뷰 작성하기 </h1>
 
-<form action="/reviews/create" method="review">
+<form action="/reviews/create" method="post">
   {% csrf_token %}
-  <input name="title" placeholder="제목" /> <br/>
-  <input name="year" placeholder="개봉년도" /> <br/>
-  <input name="genre" placeholder="개봉년도" /> <br/>
-  <input name="score" placeholder="별점" /> <br/>
-  <input name="running_time" placeholder="러닝타임" /> <br/>
-  <textarea name="content" cols="30" rows="10" placeholder="리뷰"></textarea> <br/>
-  <input name="director" placeholder="감독" /> <br/>
-  <input name="actors" placeholder="배우" /> <br/>
+  <div class="title">제목:  <input name="title" placeholder="인사이드아웃2" /></div> <br/> 
+  <div class="year">개봉년도:  <input name="year" placeholder="2024년"/></div> <br/>
+  <div class="genre">장르:  <input name="genre" placeholder="애니" /></div> <br/>
+  <div class="score">별점(5점):  <input name="score" placeholder="4.8점" /></div> <br/>
+  <div class="running_time">러닝타임:  <input name="running_time" placeholder="96분"/></div> <br/>
+  <div class="content">리뷰: </br></br> <textarea name="content" cols="30" rows="10"></textarea></div> <br/>
+  <div class="director">감독:  <input name="director" placeholder="Kelsey Mann" /></div> <br/>
+  <div class="actor">주연: <input name="actor" placeholder="라일리" /></div> <br/>
   <div>
     <input type="submit" value="작성완료">
   </div>

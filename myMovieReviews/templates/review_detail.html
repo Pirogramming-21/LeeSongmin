@@ -1,0 +1,17 @@
+<h1>{{ review.title }}</h1>
+<small>개봉년도: {{ review.year }}</small><br>
+<small>감독: {{ review.director }}</small><br>
+<small>주연: {{ review.actor }}</small><br>
+<small>장르: {{ review.genre }}</small><br>
+<small>별점: {{ review.score }}</small><br>
+<small>러닝타임: {{ review.running_time }}</small><br>
+<small>{{ review.content }}</small>
+<br>
+
+<a href="/reviews"> my Movie reviews </a> <br>
+<a href="/reviews/{{review.id}}/update"> 수정하기 </a>
+
+<form action="/reviews/{{review.id}}/delete" method="post">
+  {% csrf_token %}
+  <input type="submit" value="삭제하기">
+</form>
