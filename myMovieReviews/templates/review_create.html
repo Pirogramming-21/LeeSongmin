@@ -1,0 +1,16 @@
+<h1> 영화 리뷰 작성하기 </h1>
+
+<form action="/reviews/create" method="review">
+  {% csrf_token %}
+  <input name="title" placeholder="제목" /> <br/>
+  <input name="year" placeholder="개봉년도" /> <br/>
+  <input name="genre" placeholder="개봉년도" /> <br/>
+  <input name="score" placeholder="별점" /> <br/>
+  <input name="running_time" placeholder="러닝타임" /> <br/>
+  <textarea name="content" cols="30" rows="10" placeholder="리뷰"></textarea> <br/>
+  <input name="director" placeholder="감독" /> <br/>
+  <input name="actors" placeholder="배우" /> <br/>
+  <div>
+    <input type="submit" value="작성완료">
+  </div>
+</form>
