@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html>
+    <article>
+
+    </article>
     <body>
         <input type="button" value="fetch" onclick="
+            /*
             fetch('css').then(function(response){
                 response.text().then(function(text){
-                    alert(text);
+                    //alert(text);
+                    document.querySelector('article').innerHTML = text;
                 })
             })
+            */
+           // Asynchronous(비동기식) => 요청되는 동안 다른 일을 처리할 수 있음.
+           function callbackme() {
+            console.log('response end'); // 개발자 환경의 네트워크에서 esc 누르면 콘솔과 네트워크가 동시에 뜸
+           }
+           fetch('html').then(callbackme); //.then => 서버가 응답해주는데 시간이 걸리는데 그 때 컴퓨터가 다른 일을 하도록 하는 기능 
+           //: fetch api에게 응답이 끝나면 다음 함수(callbackme)를 실행시켜줘. 
+           //fetch => 'html'요청
+           console.log(1);
+           console.log(2);
         ">
     </body>
 </html>
