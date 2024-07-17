@@ -1,0 +1,24 @@
+{% load static %}
+
+<h2 style="color: green; font-size: 40px">DevTool Detail</h2>
+
+{% block content %}
+  <h1 style="color: green; font-size: 40px">{{devtool.name}}</h1>
+  <p>{{ devtool.kind }}</p>
+  <h2 class="my-3">{{devtool.content}}</h2>
+
+  <p>만들 수 있는 SW 목록</p>
+  {% for rel_idea in related_ideas %}
+    <a href="{% url 'ideaposts:detail' rel_idea.pk %}" class="btn btn-success">
+      {{rel_idea.title}}
+    </a>
+  {% endfor %}
+
+  <hr />
+  <form action="{% url 'devtools:delete' devtool.pk %}" method="POST">
+    {%csrf_token%}
+    <a href="{% url 'devtools:update' devtool.pk %}" class="btn btn-primary">수정</a>
+    <button type="submit" class="btn btn-danger">삭제</button>
+  </form>
+  <a href="{% url 'devtools:list' %}" class="btn btn-primary">목록</a>
+{% endblock content %}

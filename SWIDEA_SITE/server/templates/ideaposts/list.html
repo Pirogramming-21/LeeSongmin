@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block head%}
+  <title>Idea List</title>
+{%endblock%}
+
+{%block content%}
+  <div class="search-box">    
+    <a href="{% url 'ideas:create' %}" class = 'btn btn-secondary mx-2'>글 생성</a>
+  </div>
+
+  <div class="content-wrapper">
+    <!-- 글 목록 -->
+    {% for ideapost in ideaposts %}
+    <div class="item">
+      {% if ideapost.image.url != null and ideapost.image.url != '' %}
+        <img src="{{ideapost.image.url}}" alt="대체텍스트">
+      {% else %}
+        <img src="{% static 'idea_posts/image/no_img.png' %}" alt="">
+      {% endif %}
+      <div class="info">
+        <a href="{% url 'ideas:detail' ideapost.pk%}" class="title">
+          {{ideapost.title}}
+        </a>
+        <p class="devtools">예상 개발 툴 : {{ideapost.devtools_id}}</p>
+        <p class="interest">아이디어 관심도 : {{ideapost.interest}}</p>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+{%endblock%}

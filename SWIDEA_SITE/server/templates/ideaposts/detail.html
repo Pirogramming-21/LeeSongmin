@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <h1 style="color: green; font-size: 40px">{{ideapost.title}}</h1>
+  {% if ideapost.image.url != '' %}
+    <img src="{{ideapost.image.url}}" alt="아이디어 이미지" />
+  {% else %}
+    <img src="{% static 'idea_posts/image/no_img.png' %}" alt="대체 텍스트" />
+  {% endif %}
+  <p>아이디어 관심도: {{ideapost.interest}}</p>
+  <p>예상 개발툴:</p>
+  {% if idea.devtools %}
+    <p><a href="{% url 'devtool_detail' ideapost.devtools.pk %}">{{ ideapost.devtools.name }}</a></p>
+  {% else %}
+    <p>개발 도구가 지정되지 않았습니다.</p>
+  {% endif %}
+  <h2 class="my-3">{{ideapost.content}}</h2>
+  <p>작성일: {{ideapost.created_date}}</p>
+  <p>수정일: {{ideapost.updated_date}}</p>
+
+  <hr />
+  <form action="{% url 'ideas:delete' ideapost.pk %}" method="POST">
+    {%csrf_token%}
+    <a href="{% url 'ideas:update' ideapost.pk %}" class="btn btn-primary">수정</a>
+    <button type="submit" class="btn btn-danger">삭제</button>
+  </form>
+  <a href="{% url 'ideas:main' %}" class="btn btn-primary">목록</a>
+{% endblock content %}

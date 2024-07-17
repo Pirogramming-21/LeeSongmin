@@ -1,0 +1,22 @@
+{% load static %}
+
+{%block head%}
+  <title>DevTool List</title>
+{%endblock%}
+
+<h2>DevTool List</h2>
+
+{%block content%}
+  <div class="content-wrapper">
+    <!-- 개발툴 목록 -->
+    {% for devtool in devtools %}
+    <div class="devtools">
+      <a href="{% url 'devtools:detail' devtool.pk %}" class="name">
+        {{devtool.name}}
+      </a>
+      <p class="kind">{{ devtool.kind }}</p>
+      <p class="content">{{ devtool.content }}</p>
+    </div>
+    {% endfor %}
+  </div>
+{%endblock%}

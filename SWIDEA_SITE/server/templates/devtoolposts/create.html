@@ -1,0 +1,14 @@
+<h2 style="color: green; font-size: 40px">DevTool Register</h2>
+{%block head%}
+  <title>devtoolposts_create</title>
+{% endblock %}
+
+{%block content%}
+  <form
+    action="{% url 'devtools:create' %}"
+    method="post"
+  >
+    {%csrf_token%} {{form.as_p}}
+    <button class="btn btn-success">submit</button>
+  </form>
+{%endblock%}
