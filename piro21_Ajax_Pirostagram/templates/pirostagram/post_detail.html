@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{{ post.caption }}</h2>
+    <img src="{{ post.image.url }}" alt="Post image">
+    <p>좋아요: {{ post.like }} 싫어요: {{ post.dislike }}</p>
+    <button onclick="likePost({{ post.id }}, 'like')">좋아요</button>
+    <button onclick="likePost({{ post.id }}, 'dislike')">싫어요</button>
+
+    <h3>댓글</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">댓글 작성</button>
+    </form>
+    <div id="comments">
+        {% for comment in comments %}
+            <div class="comment">
+                <p>{{ comment.user.username }}: {{ comment.content }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h2>피드</h2>
+    <div id="post-list">
+        {% for post in posts %}
+            <div class="post">
+                <a href="{% url 'main:post_detail' post.id %}">
+                    {% if post.photo.url != null and post.photo.url != '' %}
+                        <img src="{{post.photo.url}}" alt="대체텍스트">
+                    {% else %}
+                         <img src="{% static 'posts/image/no_img.png' %}" alt="">
+                    {% endif %}
+                </a>
+                <div class="post-text">{{ post.caption}}</div>
+                <p>{{ post.caption }}</p>
+                <p>좋아요: {{ post.like }} 싫어요: {{ post.dislike }}</p>
+                <button onclick="likePost({{ post.id }}, 'like')">좋아요</button>
+                <button onclick="likePost({{ post.id }}, 'dislike')">싫어요</button>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block extra %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+ <script>
+    const onClickLike = async(id, type) => {
+        const url = "/like_post/";
+        const {data} = await axios.post(url, {
+            id,
+            type,
+        });
+        likeHandleResponse(data.id, data.type);
+    }
+
+    const likeHandleResponse = (id, type) => {
+        const element = document.querySelector(`.post-id-${id} .post__${type}`);
+        const originHTML = element.innerHTML;
+        const [buttonType, num] = originHTML.split(" ");
+        const count = Number(num) + 1;
+
+        element.innerHTML = `${buttonType} ${count}`;
+    }
+
+ </script>
+
+{% endblock %}
